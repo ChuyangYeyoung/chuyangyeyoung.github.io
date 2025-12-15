@@ -4,7 +4,7 @@
     "title": "Master's Student in Information Systems",
     "affiliation": "New York University",
     "photo": "images/profile.jpg",
-    "bio": "Hi!👋 I am a graduate student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by Prof. Jingyan Jiang and Prof. Zhi Wang. My research focuses on adaptive learning for machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
+    "bio": "Hi!👋 I am a master student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by Prof. Jingyan Jiang and Prof. Zhi Wang. My research focuses on adaptive learning for machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
     "email": "chuyang.ye@nyu.edu",
     "twitter": "",
     "googleScholar": "",
