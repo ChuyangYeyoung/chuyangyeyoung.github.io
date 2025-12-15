@@ -9,3 +9,6 @@
 *.tmp
 *.bak
 *~
+
+# PDF files (avoid committing large binary files)
+*.pdf
