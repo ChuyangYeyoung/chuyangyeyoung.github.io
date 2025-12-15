@@ -176,6 +176,13 @@ function populatePublications(publications) {
             }
         }
 
+        // Image
+        if (pub.image) {
+            html += '<br><div class="publication-image-container">';
+            html += '<img src="' + pub.image + '" alt="' + pub.title + '" class="publication-image">';
+            html += '</div>';
+        }
+
         html += '</li>';
         pubList.append(html);
     });
