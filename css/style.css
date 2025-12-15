@@ -1,0 +1,544 @@
+/* ===========================
+   CSS Variables
+   =========================== */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --text-light: #666;
+    --bg-color: #ffffff;
+    --bg-light: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* ===========================
+   Reset & Base Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+}
+
+/* ===========================
+   Container
+   =========================== */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
+}
+
+/* ===========================
+   Navigation
+   =========================== */
+.header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    border-bottom: 2px solid var(--border-color);
+    padding: 15px 0;
+    margin-bottom: 30px;
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* ===========================
+   Profile Section
+   =========================== */
+.profile-section {
+    margin-bottom: 40px;
+}
+
+.profile-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.profile-image {
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--secondary-color);
+    box-shadow: var(--shadow);
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.name {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.title {
+    font-size: 1.3em;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.affiliation {
+    font-size: 1.1em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.bio {
+    font-size: 1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--transition);
+    font-size: 0.95em;
+}
+
+.social-link:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.social-link i {
+    font-size: 1.2em;
+}
+
+/* ===========================
+   Section Styles
+   =========================== */
+.section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--secondary-color);
+    font-weight: 600;
+}
+
+/* ===========================
+   News Section
+   =========================== */
+.news-list {
+    background-color: var(--bg-light);
+    border-left: 4px solid var(--secondary-color);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.news-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.news-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.news-date {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* ===========================
+   Research Section
+   =========================== */
+.research-description {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    line-height: 1.8;
+}
+
+.interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.interest-tag {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+/* ===========================
+   Publications Section
+   =========================== */
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.publication-item {
+    padding: 20px;
+    background-color: var(--bg-light);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.publication-item:hover {
+    box-shadow: var(--shadow);
+    transform: translateX(5px);
+}
+
+.publication-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.publication-authors {
+    color: var(--text-light);
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+.publication-venue {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+.publication-award {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.publication-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pub-link {
+    padding: 6px 12px;
+    background-color: white;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: var(--transition);
+}
+
+.pub-link:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* ===========================
+   Timeline (Education & Experience)
+   =========================== */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--secondary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--secondary-color);
+}
+
+.timeline-degree,
+.timeline-position {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.timeline-institution {
+    color: var(--text-light);
+    margin-bottom: 3px;
+}
+
+.timeline-year,
+.timeline-period {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+.timeline-thesis {
+    margin-top: 8px;
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.95em;
+}
+
+/* ===========================
+   Teaching Section
+   =========================== */
+.teaching-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.teaching-item {
+    padding: 15px;
+    background-color: var(--bg-light);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+.teaching-course {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.teaching-details {
+    color: var(--text-light);
+    font-size: 0.95em;
+}
+
+/* ===========================
+   Service Section
+   =========================== */
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: var(--bg-light);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+.service-list li::before {
+    content: '•';
+    color: var(--secondary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-right: 8px;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+.footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-color);
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.footer-note {
+    margin-top: 5px;
+    font-size: 0.85em;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-image img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .name {
+        font-size: 2em;
+    }
+
+    .title {
+        font-size: 1.1em;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .nav {
+        gap: 10px;
+    }
+
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+
+    .timeline {
+        padding-left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 15px;
+    }
+
+    .timeline-item::before {
+        left: -28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .name {
+        font-size: 1.6em;
+    }
+
+    .profile-image img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .publication-links,
+    .social-links {
+        flex-direction: column;
+    }
+
+    .pub-link,
+    .social-link {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ===========================
+   Smooth Scrolling
+   =========================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===========================
+   Print Styles
+   =========================== */
+@media print {
+    .header,
+    .nav {
+        display: none;
+    }
+
+    .container {
+        box-shadow: none;
+        max-width: 100%;
+    }
+
+    .section {
+        page-break-inside: avoid;
+    }
+}

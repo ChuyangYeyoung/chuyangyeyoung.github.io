@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*~

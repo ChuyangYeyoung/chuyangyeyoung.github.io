@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Website Test Page</h1>
+    <p>Server is running at: <a href="http://localhost:8000">http://localhost:8000</a></p>
+    <p>This page is used to test if the server is working correctly.</p>
+
+    <h2>File Check</h2>
+    <ul>
+        <li><a href="index.html">index.html</a> - Main page</li>
+        <li><a href="data/content.json">data/content.json</a> - Data file</li>
+        <li><a href="js/main.js">js/main.js</a> - JavaScript</li>
+        <li><a href="bootstrap.css">bootstrap.css</a> - CSS</li>
+    </ul>
+
+    <h2>JavaScript Test</h2>
+    <button onclick="testFetch()">Test JSON Loading</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function testFetch() {
+            const resultEl = document.getElementById('result');
+            try {
+                resultEl.textContent = 'Loading...';
+                const response = await fetch('data/content.json');
+                const data = await response.json();
+                resultEl.textContent = 'SUCCESS!\n\n' + JSON.stringify(data, null, 2);
+            } catch (error) {
+                resultEl.textContent = 'ERROR: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

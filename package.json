@@ -1,0 +1,21 @@
+{
+  "name": "academic-website",
+  "version": "1.0.0",
+  "description": "Personal academic website - clean, modern, and easy to maintain",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "serve": "python -m http.server 8000",
+    "validate": "node -e \"console.log('Validating JSON...'); const fs = require('fs'); try { JSON.parse(fs.readFileSync('data/content.json', 'utf8')); console.log('✓ JSON is valid!'); } catch(e) { console.error('✗ JSON validation failed:', e.message); process.exit(1); }\""
+  },
+  "keywords": [
+    "academic",
+    "homepage",
+    "portfolio",
+    "cv",
+    "resume",
+    "researcher"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {}
+}

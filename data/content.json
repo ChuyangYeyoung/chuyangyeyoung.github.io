@@ -1,0 +1,80 @@
+{
+  "profile": {
+    "name": "Chuyang Ye",
+    "title": "Master's Student in Information Systems",
+    "affiliation": "New York University",
+    "photo": "images/profile.jpg",
+    "bio": "I am a graduate student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by Prof. Jingyan Jiang and Prof. Zhi Wang. My research focuses on adaptive learning machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
+    "email": "chuyang.ye@nyu.edu",
+    "twitter": "",
+    "googleScholar": "",
+    "github": "",
+    "linkedin": "",
+    "cv": ""
+  },
+  "research": {
+    "interests": [
+      "Adaptive Machine Learning Systems",
+      "Adaptive learning for Large Language Models",
+      "Tactile-Vision-Language Models"
+    ],
+    "description": "My research investigates autonomous adaptation under non-stationary environments, focusing on continual learning and test-time learning for LLMs and multimodal systems. I am interested in methods that support online self-improvement, including reliable uncertainty estimation, memory-based adaptation, and lightweight parameter-efficient updates, to maintain robustness under real-world distribution shift."
+  },
+  "news": [
+  { "date": "2025-10", "content": "One paper accepted to NeurIPS 2025" },
+  { "date": "2025-09", "content": "Started my Master's journey at the Courant Institute, New York University" },
+  { "date": "2025-08", "content": "Served as reviewer for AAAI 2026" },
+  {
+    "date": "2025-07",
+    "content": "I had graduated as Outstanding Student, Thanks to all my mentors and colleagues, especially Prof. Jingyan Jiang, Qingtin Jiang and Prof. Fang He! Without your guidance and support, I would not have achieved what I have today."  
+  },
+  { "date": "2025-03", "content": "First-author paper accepted to IEEE ICME 2025 (Oral presentation)" },
+  { "date": "2024-12", "content": "Served as reviewer for ICME 2025" }
+],
+  "publications": [
+    {
+      "title": "DATTA: Domain Diversity Aware Test-Time Adaptation for Dynamic Domain Shift Stream",
+      "authors": "Chuyang Ye, et al.",
+      "venue": "IEEE International Conference on Multimedia and Expo (ICME)",
+      "year": "2025",
+      "links": {
+        "paper": "https://ieeexplore.ieee.org/document/11209053/metrics#metrics"
+      },
+      "award": "Oral Presentation"
+    },
+    {
+      "title": "Feature-Based Instance Neighbor Discovery: Advanced Stable Test-Time Adaptation in Dynamic World",
+      "authors": "Qinting Jiang, Chuyang Ye, et al.",
+      "venue": "Neural Information Processing Systems (NeurIPS)",
+      "year": "2025",
+      "links": {
+        "paper": "https://openreview.net/forum?id=bLXfEMe1Dk"
+      }
+    }
+  ],
+  "talks": [],
+  "education": [
+    {
+      "degree": "Master of Science in Information Systems",
+      "institution": "New York University",
+      "year": "2025 - Present",
+      "thesis": ""
+    }
+  ],
+  "experience": [
+    {
+      "position": "Machine Learning Research Intern",
+      "institution": "MMlab, Tsinghua University SIGS(Supervised by Prof. Jingyan Jiang and Prof. Zhi Wang)",
+      "period": "Jul 2023 - Jun 2025"
+    },
+    {
+      "position": "Research Intern",
+      "institution": "Key Lab of Cloud Security, SZTU(Supervised by Prof. Jingyan Jiang)",
+      "period": "Jul 2022 - Jun 2025"
+    }
+  ],
+  "teaching": [],
+  "services": [
+    "Reviewer: AAAI 2026, ICME 2025"
+  ]
+}
