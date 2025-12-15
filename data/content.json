@@ -4,7 +4,7 @@
     "title": "Master's Student in Information Systems",
     "affiliation": "New York University",
     "photo": "images/profile.jpg",
-    "bio": "I am a graduate student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by Prof. Jingyan Jiang and Prof. Zhi Wang. My research focuses on adaptive learning machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
+    "bio": "I am a graduate student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by Prof. Jingyan Jiang and Prof. Zhi Wang. My research focuses on adaptive learning for machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
     "email": "chuyang.ye@nyu.edu",
     "twitter": "",
     "googleScholar": "",
@@ -18,7 +18,7 @@
       "Adaptive learning for Large Language Models",
       "Tactile-Vision-Language Models"
     ],
-    "description": "My research investigates autonomous adaptation under non-stationary environments, focusing on continual learning and test-time learning for LLMs and multimodal systems. I am interested in methods that support online self-improvement, including reliable uncertainty estimation, memory-based adaptation, and lightweight parameter-efficient updates, to maintain robustness under real-world distribution shift."
+    "description": "My research investigates autonomous adaptation under non-stationary environments, focusing on Adaptive learning for LLMs and multimodal systems. I am interested in methods that support online self-improvement, including reliable uncertainty estimation, memory-based adaptation, and lightweight parameter-efficient updates, to maintain robustness under real-world distribution shift."
   },
   "news": [
   { "date": "2025-10", "content": "One paper accepted to NeurIPS 2025" },
