@@ -48,6 +48,26 @@ async function loadContent() {
                 }
             }
         });
+
+        // Close navbar when clicking outside
+        $(document).on('click', function(event) {
+            var $navbar = $('.navbar-collapse');
+            var $toggle = $('.navbar-toggle');
+
+            // Check if navbar is expanded and click is outside navbar
+            if ($navbar.hasClass('in') &&
+                !$navbar.is(event.target) &&
+                $navbar.has(event.target).length === 0 &&
+                !$toggle.is(event.target) &&
+                $toggle.has(event.target).length === 0) {
+                $navbar.collapse('hide');
+            }
+        });
+
+        // Close navbar when clicking a nav link
+        $('.navbar-nav a').on('click', function() {
+            $('.navbar-collapse').collapse('hide');
+        });
     } catch (error) {
         console.error('Error loading content:', error);
         displayError(error);
@@ -83,7 +103,7 @@ function populateSocialLinks(profile) {
     const socialLinks = [
         { url: profile.github, icon: 'fa-github', label: 'GitHub' },
         { url: profile.twitter, icon: 'fa-twitter', label: 'Twitter' },
-        { url: profile.email, icon: 'fa-envelope', label: 'Email', prefix: 'mailto:' },
+        { url: profile.email, icon: 'fa-envelope', label: 'Contact me', prefix: 'mailto:' },
         { url: profile.linkedin, icon: 'fa-linkedin', label: 'LinkedIn' },
         { url: profile.googleScholar, icon: 'fa-graduation-cap', label: 'Google Scholar' }
     ];
@@ -153,26 +173,26 @@ function populatePublications(publications) {
 
         // Award
         if (pub.award) {
-            html += ' <strong style="color: #000; background-color: #f0f0f0; padding: 2px 6px; border: 1px solid #000;">★ ' + pub.award + '</strong>';
+            html += ' <strong class="award-badge">★ ' + pub.award + '</strong>';
         }
 
         // Links
         if (pub.links) {
             html += ' ';
             if (pub.links.paper) {
-                html += '<a href="' + pub.links.paper + '" target="_blank">[paper]</a> ';
+                html += '<a href="' + pub.links.paper + '" target="_blank">paper</a> ';
             }
             if (pub.links.code) {
-                html += '<a href="' + pub.links.code + '" target="_blank">[code]</a> ';
+                html += '<a href="' + pub.links.code + '" target="_blank">code</a> ';
             }
             if (pub.links.project) {
-                html += '<a href="' + pub.links.project + '" target="_blank">[project]</a> ';
+                html += '<a href="' + pub.links.project + '" target="_blank">project</a> ';
             }
             if (pub.links.slides) {
-                html += '<a href="' + pub.links.slides + '" target="_blank">[slides]</a> ';
+                html += '<a href="' + pub.links.slides + '" target="_blank">slides</a> ';
             }
             if (pub.links.poster) {
-                html += '<a href="' + pub.links.poster + '" target="_blank">[poster]</a> ';
+                html += '<a href="' + pub.links.poster + '" target="_blank">poster</a> ';
             }
         }
 
