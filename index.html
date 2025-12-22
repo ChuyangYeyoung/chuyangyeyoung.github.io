@@ -370,6 +370,160 @@
             border-top: 1px solid #ddd;
         }
 
+        /* Easter egg: Achievement toast */
+        .achievement-toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            border: 3px solid #FFD700;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(255, 215, 0, 0.3);
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+        }
+
+        .achievement-toast.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .achievement-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .achievement-icon {
+            font-size: 48px;
+            animation: trophy-bounce 0.6s ease-in-out;
+        }
+
+        @keyframes trophy-bounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(-10deg); }
+            75% { transform: scale(1.2) rotate(10deg); }
+        }
+
+        .achievement-text {
+            text-align: left;
+        }
+
+        .achievement-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #FFD700;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .achievement-subtitle {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: #FFD700;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Make name clickable hint */
+        #nav-name, #profile-name {
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s ease;
+        }
+
+        #nav-name:active, #profile-name:active {
+            transform: scale(0.95);
+        }
+
+        /* Easter egg: Photo hint toast */
+        .photo-hint-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+            color: #000;
+            padding: 25px 30px;
+            border-radius: 12px;
+            border: 2px solid #000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            max-width: 350px;
+        }
+
+        .photo-hint-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .photo-hint-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .photo-hint-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .photo-hint-text {
+            flex: 1;
+        }
+
+        .photo-hint-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        .photo-hint-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .photo-hint-button {
+            display: inline-block;
+            background: #000;
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none !important;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .photo-hint-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .container {
@@ -392,6 +546,65 @@
                 padding-top: 50px;
                 font-size: 17px;
                 line-height: 1.7;
+            }
+
+            /* Achievement toast on mobile */
+            .achievement-toast {
+                width: 90%;
+                max-width: 350px;
+                padding: 20px 25px;
+            }
+
+            .achievement-content {
+                gap: 15px;
+            }
+
+            .achievement-icon {
+                font-size: 36px;
+            }
+
+            .achievement-title {
+                font-size: 12px;
+            }
+
+            .achievement-subtitle {
+                font-size: 18px;
+            }
+
+            .achievement-badge {
+                font-size: 12px;
+                padding: 3px 10px;
+            }
+
+            /* Photo hint on mobile */
+            .photo-hint-toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                max-width: none;
+                padding: 20px;
+            }
+
+            .photo-hint-content {
+                gap: 12px;
+            }
+
+            .photo-hint-icon {
+                font-size: 28px;
+            }
+
+            .photo-hint-title {
+                font-size: 15px;
+            }
+
+            .photo-hint-subtitle {
+                font-size: 13px;
+            }
+
+            .photo-hint-button {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
             }
 
             h1 {

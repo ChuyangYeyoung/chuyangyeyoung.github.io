@@ -68,11 +68,151 @@ async function loadContent() {
         $('.navbar-nav a').on('click', function() {
             $('.navbar-collapse').collapse('hide');
         });
+
+        // Easter egg: Achievement system
+        initAchievementSystem();
+
+        // Easter egg: Photo click hint
+        initPhotoClickHint();
     } catch (error) {
         console.error('Error loading content:', error);
         displayError(error);
     }
 }
+
+// Easter egg: Achievement system
+function initAchievementSystem() {
+    let clickCount = 0;
+    let lastClickTime = 0;
+    const clickTimeout = 3000; // Reset after 3 seconds of no clicks
+
+    // Track clicks on name elements
+    $('#nav-name, #profile-name').on('click', function(e) {
+        const now = Date.now();
+
+        // Reset counter if too much time passed
+        if (now - lastClickTime > clickTimeout) {
+            clickCount = 0;
+        }
+
+        clickCount++;
+        lastClickTime = now;
+
+        // Show achievement on 3rd click
+        if (clickCount === 3) {
+            showAchievement();
+            clickCount = 0; // Reset for next time
+        }
+    });
+}
+
+function showAchievement() {
+    // Random humorous messages
+    const messages = [
+        { title: "Thanks for clicking!", subtitle: "Someone's got time 😄", badge: "+1 Persistence" },
+        { title: "Achievement Unlocked!", subtitle: "Continual Clicker", badge: "+1 Robustness" },
+        { title: "You found it!", subtitle: "Easter Egg Hunter", badge: "+10 Curiosity" },
+        { title: "Triple Click Master", subtitle: "That's dedication!", badge: "+5 Patience" },
+        { title: "Nice fingers!", subtitle: "Fast Clicker Detected", badge: "+3 Adaptability" }
+    ];
+
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+
+    // Create toast notification
+    const toast = $('<div>')
+        .addClass('achievement-toast')
+        .html(`
+            <div class="achievement-content">
+                <div class="achievement-icon">🏆</div>
+                <div class="achievement-text">
+                    <div class="achievement-title">${msg.title}</div>
+                    <div class="achievement-subtitle">${msg.subtitle}</div>
+                    <div class="achievement-badge">${msg.badge}</div>
+                </div>
+            </div>
+        `);
+
+    // Add to page
+    $('body').append(toast);
+
+    // Animate in
+    setTimeout(() => toast.addClass('show'), 10);
+
+    // Remove after 4 seconds
+    setTimeout(() => {
+        toast.removeClass('show');
+        setTimeout(() => toast.remove(), 500);
+    }, 4000);
+}
+
+// Easter egg: Photo click hint
+function initPhotoClickHint() {
+    let photoClickCount = 0;
+    let photoLastClickTime = 0;
+    const photoClickTimeout = 2000; // Reset after 2 seconds
+
+    $('#profile-photo').on('click', function(e) {
+        const now = Date.now();
+
+        // Reset counter if too much time passed
+        if (now - photoLastClickTime > photoClickTimeout) {
+            photoClickCount = 0;
+        }
+
+        photoClickCount++;
+        photoLastClickTime = now;
+
+        // Show hint on 2nd click
+        if (photoClickCount === 2) {
+            showPhotoHint();
+            photoClickCount = 0; // Reset
+        }
+    });
+
+    // Add cursor pointer to photo
+    $('#profile-photo').css('cursor', 'pointer');
+}
+
+function showPhotoHint() {
+    const email = $('#profile-photo').closest('.sponsor').find('a[href^="mailto:"]').attr('href') || 'mailto:chuyang.ye@nyu.edu';
+
+    // Random humorous photo messages
+    const photoMessages = [
+        { title: "Caught you staring! 👀", subtitle: "Want the high-res version? Just ask!" },
+        { title: "Like what you see?", subtitle: "I can email you the original photo!" },
+        { title: "Photo inspector detected!", subtitle: "Double-click unlocked! Email me for HD?" },
+        { title: "Thanks for the double-take!", subtitle: "Original photo available upon request 😊" },
+        { title: "Curious about the pixels?", subtitle: "Let me send you the uncompressed version!" }
+    ];
+
+    const msg = photoMessages[Math.floor(Math.random() * photoMessages.length)];
+
+    const hint = $('<div>')
+        .addClass('photo-hint-toast')
+        .html(`
+            <div class="photo-hint-content">
+                <div class="photo-hint-icon">📸</div>
+                <div class="photo-hint-text">
+                    <div class="photo-hint-title">${msg.title}</div>
+                    <div class="photo-hint-subtitle">${msg.subtitle}</div>
+                    <a href="${email}" class="photo-hint-button">Send Email</a>
+                </div>
+            </div>
+        `);
+
+    // Add to page
+    $('body').append(hint);
+
+    // Animate in
+    setTimeout(() => hint.addClass('show'), 10);
+
+    // Remove after 5 seconds
+    setTimeout(() => {
+        hint.removeClass('show');
+        setTimeout(() => hint.remove(), 500);
+    }, 5000);
+}
+
 
 // Profile Section
 function populateProfile(profile) {
