@@ -21,6 +21,7 @@
     "description": "My research investigates autonomous adaptation under non-stationary environments, focusing on Adaptive learning for LLMs and multimodal systems. I am interested in methods that support online self-improvement, including reliable uncertainty estimation, memory-based adaptation, and lightweight parameter-efficient updates, to maintain robustness under real-world distribution shift."
   },
   "news": [
+  { "date": "2026-01", "content": "Served as a Program Committee member for ICME 2026" },
   { "date": "2025-10", "content": "One paper accepted to NeurIPS 2025" },
   { "date": "2025-09", "content": "Started my Master's journey at the Courant Institute, New York University" },
   { "date": "2025-08", "content": "Served as a Program Committee member for AAAI 2026" },
@@ -77,6 +78,6 @@
   ],
   "teaching": [],
   "services": [
-    "Reviewer: AAAI 2026, ICME 2025"
+    "Reviewer: AAAI 2026; ICME 2026,2025"
   ]
 }
