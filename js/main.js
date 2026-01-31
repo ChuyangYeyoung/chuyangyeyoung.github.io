@@ -324,6 +324,30 @@ function initCrackEffect() {
         container.style.transform = 'perspective(1000px) translateZ(' + (-intensity * 50) + 'px)';
     }
 
+    function spawnCat(x, y) {
+        var cats = ['\uD83D\uDC31', '\uD83D\uDC08', '\uD83D\uDE3A', '\uD83D\uDE38', '\uD83D\uDE40', '\uD83D\uDC3E'];
+        var cat = document.createElement('div');
+        cat.textContent = cats[Math.floor(Math.random() * cats.length)];
+        cat.style.cssText = 'position:fixed;left:' + x + 'px;top:' + y + 'px;font-size:' + (24 + Math.floor(Math.random() * 12)) + 'px;pointer-events:none;z-index:9999;margin-left:-14px;margin-top:-14px;';
+        document.body.appendChild(cat);
+
+        var dx = (Math.random() - 0.5) * 220;
+        var jumpH = -100 - Math.random() * 140;
+        var rot = (Math.random() - 0.5) * 70;
+        var dur = 1200 + Math.random() * 600;
+
+        cat.animate([
+            { transform: 'scale(0) rotate(0deg)', opacity: 0, offset: 0 },
+            { transform: 'scale(1.3) translateY(-10px)', opacity: 1, offset: 0.12 },
+            { transform: 'translate(' + (dx * 0.3) + 'px,' + (jumpH * 0.85) + 'px) scale(1.05) rotate(' + (rot * 0.3) + 'deg)', opacity: 1, offset: 0.35 },
+            { transform: 'translate(' + (dx * 0.6) + 'px,' + jumpH + 'px) scale(1) rotate(' + (rot * 0.6) + 'deg)', opacity: 1, offset: 0.55 },
+            { transform: 'translate(' + (dx * 0.85) + 'px,' + (jumpH * 0.3) + 'px) scale(0.9) rotate(' + (rot * 0.85) + 'deg)', opacity: 0.7, offset: 0.8 },
+            { transform: 'translate(' + dx + 'px, 80px) scale(0.7) rotate(' + rot + 'deg)', opacity: 0, offset: 1 }
+        ], { duration: dur, easing: 'ease-out', fill: 'forwards' }).onfinish = function() {
+            cat.remove();
+        };
+    }
+
     function shake() {
         var el = document.documentElement;
         el.style.animation = 'none';
@@ -371,6 +395,17 @@ function initCrackEffect() {
             drawCrack(e.clientX, e.clientY, intensity);
             updateDepression(intensity);
             shake();
+            // Spawn cats from cracks
+            var catChance = 0.3 + intensity * 0.4;
+            if (Math.random() < catChance) {
+                spawnCat(e.clientX, e.clientY);
+                // Extra cat at high intensity
+                if (intensity > 0.5 && Math.random() < 0.4) {
+                    var ox = e.clientX + (Math.random() - 0.5) * 30;
+                    var oy = e.clientY + (Math.random() - 0.5) * 30;
+                    setTimeout(function() { spawnCat(ox, oy); }, 80 + Math.random() * 120);
+                }
+            }
         }
     });
 
