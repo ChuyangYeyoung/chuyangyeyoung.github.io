@@ -74,6 +74,9 @@ async function loadContent() {
 
         // Easter egg: Photo click hint
         initPhotoClickHint();
+
+        // Easter egg: Crack and cave-in effect
+        initCrackEffect();
     } catch (error) {
         console.error('Error loading content:', error);
         displayError(error);
@@ -211,6 +214,175 @@ function showPhotoHint() {
         hint.removeClass('show');
         setTimeout(() => hint.remove(), 500);
     }, 5000);
+}
+
+
+// Easter egg: Screen crack and cave-in effect
+function initCrackEffect() {
+    var clicks = 0;
+    var lastTime = 0;
+    var resetTimer = null;
+    var canvas = null;
+    var ctx = null;
+    var depthOverlay = null;
+    var GAP = 2000;
+    var START = 8;
+    var PEAK = 20;
+
+    function ensureCanvas() {
+        if (canvas) return ctx;
+        canvas = document.createElement('canvas');
+        canvas.id = 'crack-canvas';
+        var dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;';
+        document.body.appendChild(canvas);
+        ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        return ctx;
+    }
+
+    function ensureDepthOverlay() {
+        if (depthOverlay) return depthOverlay;
+        depthOverlay = document.createElement('div');
+        depthOverlay.id = 'crack-depth-overlay';
+        depthOverlay.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9997;transition:box-shadow 0.4s ease;';
+        document.body.appendChild(depthOverlay);
+        return depthOverlay;
+    }
+
+    function drawImpact(c, x, y) {
+        // Small impact point
+        c.beginPath();
+        c.arc(x, y, 2 + Math.random() * 3, 0, Math.PI * 2);
+        c.fillStyle = 'rgba(0,0,0,0.6)';
+        c.fill();
+        // Radiating micro-cracks around impact
+        for (var i = 0; i < 5; i++) {
+            var a = Math.random() * Math.PI * 2;
+            var r = 4 + Math.random() * 6;
+            c.beginPath();
+            c.moveTo(x, y);
+            c.lineTo(x + Math.cos(a) * r, y + Math.sin(a) * r);
+            c.strokeStyle = 'rgba(0,0,0,0.4)';
+            c.lineWidth = 0.5;
+            c.stroke();
+        }
+    }
+
+    function drawCrack(x, y, intensity) {
+        var c = ensureCanvas();
+        drawImpact(c, x, y);
+        var arms = 3 + Math.floor(Math.random() * 3 + intensity * 3);
+        for (var i = 0; i < arms; i++) {
+            var angle = (Math.PI * 2 / arms) * i + (Math.random() - 0.5) * 0.5;
+            var len = 30 + Math.random() * 60 + intensity * 40;
+            drawBranch(c, x, y, angle, len, 1.5 + intensity * 1.5, 3);
+        }
+    }
+
+    function drawBranch(c, x, y, angle, len, width, depth) {
+        if (depth <= 0 || len < 5) return;
+        c.beginPath();
+        c.moveTo(x, y);
+        var cx = x, cy = y;
+        var segs = 3 + Math.floor(Math.random() * 3);
+        var sl = len / segs;
+        for (var i = 0; i < segs; i++) {
+            angle += (Math.random() - 0.5) * 0.7;
+            cx += Math.cos(angle) * sl;
+            cy += Math.sin(angle) * sl;
+            c.lineTo(cx, cy);
+        }
+        // Dark crack line
+        c.strokeStyle = 'rgba(20,20,20,' + (0.3 + Math.random() * 0.4) + ')';
+        c.lineWidth = width;
+        c.lineCap = 'round';
+        c.stroke();
+        // Glass edge highlight
+        c.strokeStyle = 'rgba(255,255,255,' + (0.06 + Math.random() * 0.08) + ')';
+        c.lineWidth = width + 1.5;
+        c.stroke();
+        // Sub-branch
+        if (Math.random() > 0.35) {
+            var dir = Math.random() > 0.5 ? 1 : -1;
+            drawBranch(c, cx, cy, angle + dir * (0.4 + Math.random() * 0.6),
+                       len * 0.45, width * 0.6, depth - 1);
+        }
+    }
+
+    function updateDepression(intensity) {
+        var overlay = ensureDepthOverlay();
+        var spread = intensity * 120;
+        var alpha = intensity * 0.35;
+        overlay.style.boxShadow = 'inset 0 0 ' + spread + 'px ' + (spread * 0.4) + 'px rgba(0,0,0,' + alpha + ')';
+        // Perspective cave-in on container
+        var container = document.querySelector('.container');
+        container.style.transition = 'transform 0.4s ease';
+        container.style.transformOrigin = '50% 0%';
+        container.style.transform = 'perspective(1000px) translateZ(' + (-intensity * 50) + 'px)';
+    }
+
+    function shake() {
+        var el = document.documentElement;
+        el.style.animation = 'none';
+        void el.offsetHeight;
+        el.style.animation = 'crack-shake 0.15s ease';
+    }
+
+    function reset() {
+        clicks = 0;
+        if (canvas) {
+            canvas.style.transition = 'opacity 1.2s ease';
+            canvas.style.opacity = '0';
+            var c = canvas;
+            setTimeout(function() { c.remove(); }, 1200);
+            canvas = null;
+            ctx = null;
+        }
+        if (depthOverlay) {
+            depthOverlay.style.boxShadow = 'inset 0 0 0px 0px rgba(0,0,0,0)';
+            var d = depthOverlay;
+            setTimeout(function() { d.remove(); }, 1200);
+            depthOverlay = null;
+        }
+        var container = document.querySelector('.container');
+        container.style.transition = 'transform 0.8s ease';
+        container.style.transform = '';
+        setTimeout(function() {
+            container.style.transition = '';
+            container.style.transformOrigin = '';
+        }, 800);
+    }
+
+    $(document).on('click', function(e) {
+        var now = Date.now();
+        if (now - lastTime > GAP) {
+            clicks = Math.max(0, clicks - 2);
+        }
+        clicks++;
+        lastTime = now;
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(reset, 4000);
+
+        if (clicks >= START) {
+            var intensity = Math.min((clicks - START) / (PEAK - START), 1);
+            drawCrack(e.clientX, e.clientY, intensity);
+            updateDepression(intensity);
+            shake();
+        }
+    });
+
+    window.addEventListener('resize', function() {
+        if (canvas) {
+            var dpr = window.devicePixelRatio || 1;
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+            ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+        }
+    });
 }
 
 
