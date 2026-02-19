@@ -548,7 +548,8 @@ html {
 .abstract-text {
     margin-top: 6px;
     padding: 8px 12px;
-    font-size: 0.88em;
+    font-size: 0.82em;
+    font-family: Georgia, 'Times New Roman', serif;
     color: #555;
     background: #f8f8f8;
     border-left: 3px solid var(--primary-color);
