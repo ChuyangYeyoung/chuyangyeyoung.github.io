@@ -34,10 +34,22 @@
 ],
   "publications": [
     {
+      "title": "Test-Time Adaptation for Tactile-Vision-Language Models",
+      "authors": "Chuyang Ye, Haoxian Jing, Qinting Jiang, Yixi Lin, Qiang Li, Xing Tang, Jingyan Jiang",
+      "venue": "arXiv preprint",
+      "year": "2026",
+      "abstract": "Tactile-vision-language (TVL) models are increasingly deployed in real-world robotic and multimodal perception tasks, where test-time distribution shifts are unavoidable. Existing test-time adaptation (TTA) methods provide filtering in unimodal settings but lack explicit treatment of modality-wise reliability under asynchronous cross-modal shifts, leaving them brittle when some modalities become unreliable. We study TTA for TVL models under such shifts and propose a reliability-aware framework that estimates per-modality reliability from prediction uncertainty and perturbation-based responses. This shared reliability signal is used to (i) filter unreliable test samples, (ii) adaptively fuse tactile, visual, and language features, and (iii) regularize test-time optimization with a reliability-guided objective. On the TAG-C benchmark and additional TVL scenarios, our approach consistently outperforms strong TTA baselines, achieving accuracy gains of up to 49.9% under severe modality corruptions, underscoring the importance of explicit modality-wise reliability modeling for robust test-time adaptation.",
+      "links": {
+        "paper": "https://arxiv.org/abs/2602.15873"
+      },
+      "image": "images/publications/TVL_TTA_overview.png"
+    },
+    {
       "title": "DATTA: Domain Diversity Aware Test-Time Adaptation for Dynamic Domain Shift Stream",
-      "authors": "Chuyang Ye, et al.",
+      "authors": "Chuyang Ye, Dongyan Wei, Zhendong Liu, Yuanyi Pang, Yixi Lin, Qinting Jiang, Jingyan Jiang, Dongbiao He",
       "venue": "IEEE International Conference on Multimedia and Expo (ICME)",
       "year": "2025",
+      "abstract": "Test-Time Adaptation (TTA) addresses domain shifts between training and testing. However, existing methods assume a homogeneous target domain (e.g., single domain) at any given time. They fail to handle the dynamic nature of real-world data, where single-domain and multiple-domain distributions change over time. We identify that performance drops in multiple-domain scenarios are caused by batch normalization errors and gradient conflicts, which hinder adaptation. To solve these challenges, we propose Domain Diversity Adaptive Test-Time Adaptation (DATTA), the first approach to handle TTA under dynamic domain shift data streams. It is guided by a novel domain-diversity score. DATTA has three key components: a domain-diversity discriminator to recognize single- and multiple-domain patterns, domain-diversity adaptive batch normalization to combine source and test-time statistics, and domain-diversity adaptive fine-tuning to resolve gradient conflicts. Extensive experiments show that DATTA significantly outperforms state-of-the-art methods by up to 13%.",
       "links": {
         "paper": "https://ieeexplore.ieee.org/document/11209053"
       },
@@ -46,9 +58,10 @@
     },
     {
       "title": "Feature-Based Instance Neighbor Discovery: Advanced Stable Test-Time Adaptation in Dynamic World",
-      "authors": "Qinting Jiang, Chuyang Ye, et al.",
+      "authors": "Qinting Jiang, Chuyang Ye, Dongyan Wei, Bingli Wang, Yuan Xue, Jingyan Jiang, Zhi Wang",
       "venue": "Neural Information Processing Systems (NeurIPS)",
       "year": "2025",
+      "abstract": "Despite progress, deep neural networks still suffer performance declines under distribution shifts between training and test domains, leading to a substantial decrease in Quality of Experience (QoE) for applications. Existing test-time adaptation (TTA) methods are challenged by dynamic, multiple test distributions within batches. We observe that feature distributions across different domains inherently cluster into distinct groups with varying means and variances. This divergence reveals a critical limitation of previous global normalization strategies in TTA, which inevitably distort the original data characteristics. Based on this insight, we propose Feature-based Instance Neighbor Discovery (FIND), which comprises three key components: Layer-wise Feature Disentanglement (LFD), Feature Aware Batch Normalization (FABN) and Selective FABN (S-FABN). LFD stably captures features with similar distributions at each layer by constructing graph structures. While FABN optimally combines source statistics with test-time distribution specific statistics for robust feature representation. Finally, S-FABN determines which layers require feature partitioning and which can remain unified, thereby enhancing inference efficiency. Extensive experiments demonstrate that FIND significantly outperforms existing methods, achieving a 30% accuracy improvement in dynamic scenarios while maintaining computational efficiency.",
       "links": {
         "paper": "https://openreview.net/forum?id=bLXfEMe1Dk"
       },

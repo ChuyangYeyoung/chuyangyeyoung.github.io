@@ -504,7 +504,8 @@ function populatePublications(publications) {
 
         // Authors
         if (pub.authors) {
-            html += '<strong>' + pub.authors + '</strong>, ';
+            const authorStr = pub.authors.replace('Chuyang Ye', '<strong>Chuyang Ye</strong>');
+            html += authorStr + ', ';
         }
 
         // Title in italics
@@ -543,6 +544,13 @@ function populatePublications(publications) {
             }
         }
 
+        // Abstract toggle
+        if (pub.abstract) {
+            const absId = 'abs-' + Math.random().toString(36).substr(2, 9);
+            html += '<a class="abs-toggle" data-target="' + absId + '">[abs]</a>';
+            html += '<div id="' + absId + '" class="abstract-text" style="display:none;">' + pub.abstract + '</div>';
+        }
+
         // Image
         if (pub.image) {
             html += '<br><div class="publication-image-container">';
@@ -552,6 +560,12 @@ function populatePublications(publications) {
 
         html += '</li>';
         pubList.append(html);
+    });
+
+    pubList.on('click', '.abs-toggle', function(e) {
+        e.preventDefault();
+        const target = $('#' + $(this).data('target'));
+        target.slideToggle(200);
     });
 }
 

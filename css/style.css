@@ -525,6 +525,38 @@ html {
 }
 
 /* ===========================
+   Publication Abstract
+   =========================== */
+.abs-toggle {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 1px 5px;
+    font-size: 0.75em;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: middle;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.abs-toggle:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+.abstract-text {
+    margin-top: 6px;
+    padding: 8px 12px;
+    font-size: 0.88em;
+    color: #555;
+    background: #f8f8f8;
+    border-left: 3px solid var(--primary-color);
+    border-radius: 0 3px 3px 0;
+    line-height: 1.6;
+}
+
+/* ===========================
    Print Styles
    =========================== */
 @media print {
