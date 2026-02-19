@@ -21,6 +21,36 @@
     <link rel="stylesheet" href="bootstrap.css" media="screen">
     <link rel="stylesheet" href="assets/css/bootswatch.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .pub-btn {
+            display: inline-block;
+            margin-left: 4px;
+            padding: 1px 7px;
+            font-size: 0.75em;
+            font-weight: normal;
+            color: #2c3e50;
+            border: 1px solid #2c3e50;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+        .pub-btn:hover {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        .abstract-text {
+            margin-top: 6px;
+            padding: 8px 12px;
+            font-size: 0.82em;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: #555;
+            background: #f8f8f8;
+            border-left: 3px solid #2c3e50;
+            border-radius: 0 3px 3px 0;
+            line-height: 1.6;
+        }
+    </style>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -278,25 +308,18 @@
             font-style: italic;
         }
 
-        /* Award badge - black & white (matches publication links) */
+        /* Award badge */
         #publications-list .award-badge {
-            color: #000 !important;
-            background-color: #f0f0f0;
-            padding: 6px 10px;
-            margin: 3px 2px;
-            min-height: 32px;
-            line-height: 1.4;
-            border: 1px solid #000;
-            font-weight: bold;
-            font-size: 1em;
-            white-space: nowrap;
             display: inline-block;
+            margin-left: 4px;
+            padding: 1px 7px;
+            font-size: 0.75em;
+            font-weight: normal;
+            color: #2c3e50;
+            border: 1px solid #2c3e50;
+            border-radius: 3px;
             vertical-align: middle;
-            transition: all 0.2s ease;
-        }
-
-        #publications-list .award-badge:hover {
-            background-color: #e0e0e0;
+            white-space: nowrap;
         }
 
         /* Publication images */
@@ -314,8 +337,8 @@
             border: 1px solid #ddd;
         }
 
-        /* Publication action links - button styling (matches award badge style) */
-        #publications-list a {
+        #publications-list a,
+        #publications-list span.pub-btn {
             display: inline-block;
             padding: 6px 10px;
             margin: 3px 2px;
@@ -331,7 +354,8 @@
             white-space: nowrap;
         }
 
-        #publications-list a:hover {
+        #publications-list a:hover,
+        #publications-list span.pub-btn:hover {
             background-color: #e0e0e0;
             text-decoration: none !important;
         }
@@ -664,19 +688,6 @@
                 font-size: 20px;
             }
 
-            #publications-list a {
-                padding: 10px 14px;
-                min-height: 44px;
-                margin: 5px 3px;
-                font-size: 0.95em;
-            }
-
-            #publications-list .award-badge {
-                padding: 10px 14px;
-                min-height: 44px;
-                margin: 5px 3px;
-                font-size: 0.95em;
-            }
 
             .container {
                 width: 90%;
@@ -788,23 +799,6 @@
                 margin-bottom: 18px;
             }
 
-            #publications-list a {
-                display: block;
-                width: 100%;
-                margin: 6px 0;
-                padding: 12px 16px;
-                min-height: 48px;
-                text-align: center;
-            }
-
-            #publications-list .award-badge {
-                display: block;
-                width: 100%;
-                margin: 6px 0;
-                padding: 12px 16px;
-                min-height: 48px;
-                text-align: center;
-            }
 
             /* 分节间距 */
             .bs-docs-section {

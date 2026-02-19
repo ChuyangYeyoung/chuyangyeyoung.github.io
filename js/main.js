@@ -521,33 +521,33 @@ function populatePublications(publications) {
 
         // Award
         if (pub.award) {
-            html += ' <strong class="award-badge">★ ' + pub.award + '</strong>';
+            html += ' <span class="pub-btn">★ ' + pub.award + '</span>';
         }
 
         // Links
         if (pub.links) {
             html += ' ';
             if (pub.links.paper) {
-                html += '<a href="' + pub.links.paper + '" target="_blank">paper</a> ';
+                html += '<a class="pub-btn" href="' + pub.links.paper + '" target="_blank">paper</a> ';
             }
             if (pub.links.code) {
-                html += '<a href="' + pub.links.code + '" target="_blank">code</a> ';
+                html += '<a class="pub-btn" href="' + pub.links.code + '" target="_blank">code</a> ';
             }
             if (pub.links.project) {
-                html += '<a href="' + pub.links.project + '" target="_blank">project</a> ';
+                html += '<a class="pub-btn" href="' + pub.links.project + '" target="_blank">project</a> ';
             }
             if (pub.links.slides) {
-                html += '<a href="' + pub.links.slides + '" target="_blank">slides</a> ';
+                html += '<a class="pub-btn" href="' + pub.links.slides + '" target="_blank">slides</a> ';
             }
             if (pub.links.poster) {
-                html += '<a href="' + pub.links.poster + '" target="_blank">poster</a> ';
+                html += '<a class="pub-btn" href="' + pub.links.poster + '" target="_blank">poster</a> ';
             }
         }
 
         // Abstract toggle
         if (pub.abstract) {
             const absId = 'abs-' + Math.random().toString(36).substr(2, 9);
-            html += '<a class="abs-toggle" data-target="' + absId + '">[abs]</a>';
+            html += '<a class="pub-btn abs-toggle" data-target="' + absId + '">abs</a>';
             html += '<div id="' + absId + '" class="abstract-text" style="display:none;">' + pub.abstract + '</div>';
         }
 
