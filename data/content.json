@@ -21,6 +21,8 @@
     "description": "My research investigates autonomous adaptation under non-stationary environments, focusing on Adaptive learning for LLMs and multimodal systems. I am interested in methods that support online self-improvement, including reliable uncertainty estimation, memory-based adaptation, and lightweight parameter-efficient updates, to maintain robustness under real-world distribution shift."
   },
   "news": [
+  { "date": "2026-03", "content": "Open-sourced <a href=\"https://github.com/YoungYeeee/skillforge\" target=\"_blank\">SkillForge</a> — learning paths that use AI to make you capable, not dependent." },
+  { "date": "2026-02", "content": "New preprint: <a href=\"https://arxiv.org/abs/2602.15873\" target=\"_blank\">Test-Time Adaptation for Tactile-Vision-Language Models</a> — a new test-time adaptation framework for tactile-vision-language models that estimates per-modality reliability to handle real-world distribution shifts." },
   { "date": "2026-01", "content": "Served as a Program Committee member for ICME 2026" },
   { "date": "2025-10", "content": "One paper accepted to NeurIPS 2025" },
   { "date": "2025-09", "content": "Started my Master's journey at the Courant Institute, New York University" },
