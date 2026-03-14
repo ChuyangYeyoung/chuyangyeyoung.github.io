@@ -4,7 +4,7 @@
     "title": "Master's Student in Information Systems",
     "affiliation": "New York University",
     "photo": "images/profile.jpg",
-    "bio": "Hi!👋 I am a master student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by <a href="https://jiangjingyan.com/" target="_blank">Prof. Jingyan Jiang</a> and <a href="http://zwang.inflexionlab.org/#students" target="_blank">Prof. Zhi Wang</a>. My research focuses on adaptive learning for machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
+    "bio": "Hi!👋 I am a master student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by <a href=\"https://jiangjingyan.com/\" target=\"_blank\">Prof. Jingyan Jiang</a> and <a href=\"http://zwang.inflexionlab.org/#students\" target=\"_blank\">Prof. Zhi Wang</a>. My research focuses on adaptive learning for machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
     "email": "chuyang.ye@nyu.edu",
     "twitter": "",
     "googleScholar": "",
@@ -29,7 +29,7 @@
   { "date": "2025-08", "content": "Served as a Program Committee member for AAAI 2026" },
   {
     "date": "2025-07",
-    "content": "I had graduated as Outstanding Student, Thanks to all my mentors and colleagues, especially <a href="https://jiangjingyan.com/" target="_blank">Prof. Jingyan Jiang</a>, Qingtin Jiang and Prof. Fang He! Without your guidance and support, I would not have achieved what I have today."  
+    "content": "I had graduated as Outstanding Student, Thanks to all my mentors and colleagues, especially <a href=\"https://jiangjingyan.com/\" target=\"_blank\">Prof. Jingyan Jiang</a>, Qingtin Jiang and Prof. Fang He! Without your guidance and support, I would not have achieved what I have today."  
   },
   { "date": "2025-03", "content": "First-author paper accepted to IEEE ICME 2025 (Oral presentation)" },
   { "date": "2024-12", "content": "Served as a Program Committee member for ICME 2025" }
@@ -82,12 +82,12 @@
   "experience": [
     {
       "position": "Machine Learning Research Intern",
-      "institution": "MMlab, Tsinghua University SIGS(Supervised by <a href="https://jiangjingyan.com/" target="_blank">Prof. Jingyan Jiang</a> and <a href="http://zwang.inflexionlab.org/#students" target="_blank">Prof. Zhi Wang</a>)",
+      "institution": "MMlab, Tsinghua University SIGS(Supervised by <a href=\"https://jiangjingyan.com/\" target=\"_blank\">Prof. Jingyan Jiang</a> and <a href=\"http://zwang.inflexionlab.org/#students\" target=\"_blank\">Prof. Zhi Wang</a>)",
       "period": "Jul 2023 - Jun 2025"
     },
     {
       "position": "Research Intern",
-      "institution": "Key Lab of Cloud Security, SZTU(Supervised by <a href="https://jiangjingyan.com/" target="_blank">Prof. Jingyan Jiang</a>)",
+      "institution": "Key Lab of Cloud Security, SZTU(Supervised by <a href=\"https://jiangjingyan.com/\" target=\"_blank\">Prof. Jingyan Jiang</a>)",
       "period": "Jul 2022 - Jun 2025"
     }
   ],
