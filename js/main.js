@@ -489,6 +489,9 @@ function populateResearch(research) {
     }
 }
 
+// Cache for pretext-computed abstract heights, keyed by abs div ID
+const abstractHeightCache = {};
+
 // Publications
 function populatePublications(publications) {
     const pubList = $('#publications-list');
@@ -564,8 +567,27 @@ function populatePublications(publications) {
 
     pubList.on('click', '.abs-toggle', function(e) {
         e.preventDefault();
-        const target = $('#' + $(this).data('target'));
-        target.slideToggle(200);
+        const absId = $(this).data('target');
+        const target = $('#' + absId);
+
+        let duration = 200; // fallback if pretext not loaded
+        if (window.pretext) {
+            if (!abstractHeightCache[absId]) {
+                // .abstract-text CSS: font-size 0.82em, font-family Georgia, line-height 1.6
+                // padding: 8px 12px (12px each side = 24px horizontal)
+                const containerWidth = target.closest('li').width();
+                const maxWidth = containerWidth - 24;
+                const bodyFontSize = parseFloat($('body').css('font-size'));
+                const fontSize = (0.82 * bodyFontSize).toFixed(2);
+                const lineHeightPx = 0.82 * bodyFontSize * 1.6;
+                const prepared = window.pretext.prepare(target.text(), fontSize + 'px Georgia');
+                const { height } = window.pretext.layout(prepared, maxWidth, lineHeightPx);
+                abstractHeightCache[absId] = height;
+            }
+            duration = Math.round(Math.min(600, Math.max(120, abstractHeightCache[absId] * 0.8)));
+        }
+
+        target.slideToggle(duration);
     });
 }
 
