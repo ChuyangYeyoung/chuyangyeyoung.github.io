@@ -4,7 +4,7 @@
     "title": "Master's Student in Information Systems",
     "affiliation": "New York University",
     "photo": "images/profile-scholar.png",
-    "bio": "Hi!👋 I am a master student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMlab, Tsinghua University Shenzhen International Graduate School, supervised by <a href=\"https://jiangjingyan.com/\" target=\"_blank\">Prof. Jingyan Jiang</a> and <a href=\"http://zwang.inflexionlab.org/#students\" target=\"_blank\">Prof. Zhi Wang</a>. My research focuses on adaptive learning for machine learning systems that can learn in dynamic real world.\n\nMy current work investigates adaptive learning methods for large language models and multimodal systems, with emphasis on enabling models to adapt autonomously without retraining in dynamic deployments.",
+    "bio": "Hi! 👋 I am a master's student at the Courant Institute of Mathematical Sciences, New York University. Previously, I was a Machine Learning Research Intern at MMLab, Tsinghua University Shenzhen International Graduate School, supervised by <a href=\"https://jiangjingyan.com/\" target=\"_blank\">Prof. Jingyan Jiang</a> and <a href=\"http://zwang.inflexionlab.org/#students\" target=\"_blank\">Prof. Zhi Wang</a>.",
     "email": "chuyang.ye@nyu.edu",
     "twitter": "",
     "googleScholar": "",
@@ -14,11 +14,10 @@
   },
   "research": {
     "interests": [
-      "Adaptive Machine Learning Systems",
-      "Adaptive learning for Large Language Models",
-      "Tactile-Vision-Language Models"
+      "Test-Time Learning",
+      "Model Design and Training"
     ],
-    "description": "My research investigates autonomous adaptation under non-stationary environments, focusing on Adaptive learning for LLMs and multimodal systems. I am interested in methods that support online self-improvement, including reliable uncertainty estimation, memory-based adaptation, and lightweight parameter-efficient updates, to maintain robustness under real-world distribution shift."
+    "description": "I am interested in how models learn at test time, particularly how model design and training can prepare them to learn from new data and feedback."
   },
   "news": [
   { "date": "2026-03", "content": "Open-sourced <a href=\"https://github.com/YoungYeeee/skillforge\" target=\"_blank\">SkillForge</a> — learning paths that use AI to make you capable, not dependent." },
