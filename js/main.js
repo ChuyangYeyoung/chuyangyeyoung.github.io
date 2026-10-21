@@ -8,7 +8,7 @@ $(document).ready(function() {
 async function loadContent() {
     try {
         console.log('Loading content from data/content.json...');
-        const response = await fetch('data/content.json');
+        const response = await fetch('data/content.json', { cache: 'no-cache' });
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
