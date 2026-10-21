@@ -20,6 +20,7 @@
     "description": "I am interested in how models learn at test time, particularly how model design and training can prepare them to learn from new data and feedback."
   },
   "news": [
+  {"date": "2026-10", "content": "New preprint: <a href=\"https://arxiv.org/abs/2610.28511\" target=\"_blank\">SenseAlign: Understanding Vision and Touch through Language at Test Time</a>."},
   { "date": "2026-03", "content": "Open-sourced SkillForge — learning paths that use AI to make you capable, not dependent." },
   { "date": "2026-02", "content": "New preprint: <a href=\"https://arxiv.org/abs/2602.15873\" target=\"_blank\">Test-Time Adaptation for Tactile-Vision-Language Models</a> — a new test-time adaptation framework for tactile-vision-language models that estimates per-modality reliability to handle real-world distribution shifts." },
   { "date": "2026-01", "content": "Served as a Program Committee member for ICME 2026" },
@@ -34,6 +35,17 @@
   { "date": "2024-12", "content": "Served as a Program Committee member for ICME 2025" }
 ],
   "publications": [
+    {
+      "title": "SenseAlign: Understanding Vision and Touch through Language at Test Time",
+      "authors": "Chuyang Ye, Qinting Jiang, Jingyan Jiang",
+      "venue": "arXiv preprint",
+      "year": "2026",
+      "abstract": "Tactile-visual-language models combine vision and touch through a shared language space to recognize objects and materials. In real-world deployment, changes in lighting, contact quality or sensor hardware can shift visual or tactile inputs and degrade recognition performance. When both modalities contribute to a prediction, an unreliable modality can override correct evidence from the other. Since labeled data are generally unavailable during deployment, test-time adaptation offers a way to recover recognition performance from unlabeled observations. In this setting, we find that comparing accumulated observations with the text embeddings of candidate classes reveals modality reliability differences that confidence can miss. Refining features against competing classes also improves recognition beyond geometric alignment alone. These findings motivate SenseAlign, which uses a common semantic reference for test-time modality weighting and feature correction. Alignment Trust weights each modality according to its support for shared predicted classes. Anchor Realignment uses the same class text embeddings to fit a shared feature correction that separates predicted classes from alternatives. Both modules use the same unlabeled history while keeping all encoders frozen. Extensive experiments across diverse datasets demonstrate strong recognition performance under both natural shifts and controlled corruptions.",
+      "links": {
+        "paper": "https://arxiv.org/abs/2610.28511"
+      },
+      "image": "images/publications/SenseAlign_overview.png"
+    },
     {
       "title": "Test-Time Adaptation for Tactile-Vision-Language Models",
       "authors": "Chuyang Ye, Haoxian Jing, Qinting Jiang, Yixi Lin, Qiang Li, Xing Tang, Jingyan Jiang",
