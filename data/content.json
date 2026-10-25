@@ -23,13 +23,13 @@
   {"date": "2026-10", "content": "New preprint: <a href=\"https://arxiv.org/abs/2610.28511\" target=\"_blank\">SenseAlign: Understanding Vision and Touch through Language at Test Time</a>."},
   { "date": "2026-03", "content": "Open-sourced SkillForge — learning paths that use AI to make you capable, not dependent." },
   { "date": "2026-02", "content": "New preprint: <a href=\"https://arxiv.org/abs/2602.15873\" target=\"_blank\">Test-Time Adaptation for Tactile-Vision-Language Models</a> — a new test-time adaptation framework for tactile-vision-language models that estimates per-modality reliability to handle real-world distribution shifts." },
-  { "date": "2025-10", "content": "One paper accepted to NeurIPS 2025" },
+  { "date": "2025-10", "content": "One paper accepted to NeurIPS 2025. Glad to share FIND in San Diego!" },
   { "date": "2025-09", "content": "Started my Master's journey at the Courant Institute, New York University" },
   {
     "date": "2025-07",
     "content": "I had graduated as Outstanding Student, Thanks to all my mentors and colleagues, especially <a href=\"https://jiangjingyan.com/\" target=\"_blank\">Prof. Jingyan Jiang</a>, Qingtin Jiang and Prof. Fang He! Without your guidance and support, I would not have achieved what I have today."  
   },
-  { "date": "2025-03", "content": "First-author paper accepted to IEEE ICME 2025 (Oral presentation)" }
+  { "date": "2025-03", "content": "One paper accepted to IEEE ICME 2025. Happy to give an oral presentation in Nantes!" }
 ],
   "publications": [
     {
