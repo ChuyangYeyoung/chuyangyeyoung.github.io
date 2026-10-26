@@ -554,9 +554,11 @@ function populatePublications(publications) {
         }
         html += '</article>';
         if (pub.image) {
-            html += '<figure class="publication-image-container"><img src="' + escapeText(pub.image) +
+            html += '<figure class="publication-image-container"><a class="publication-image-link" href="' +
+                escapeText(pub.image) + '" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: ' +
+                escapeText(pub.title) + '" title="View full-size figure"><img src="' + escapeText(pub.image) +
                 '" alt="Overview figure for ' + escapeText(pub.title) +
-                '" class="publication-image" loading="lazy" decoding="async"></figure>';
+                '" class="publication-image" loading="lazy" decoding="async"></a></figure>';
         }
         html += '</li>';
         pubList.append(html);
