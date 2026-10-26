@@ -466,6 +466,7 @@ function populateSocialLinks(profile) {
     socialNav.empty();
 
     const socialLinks = [
+        { url: profile.email, icon: 'fa-envelope', label: 'Email', prefix: 'mailto:' },
         { url: profile.github, icon: 'fa-github', label: 'GitHub' },
         { url: profile.twitter, icon: 'fa-twitter', label: 'Twitter' },
         { url: profile.linkedin, icon: 'fa-linkedin', label: 'LinkedIn' },
@@ -484,8 +485,9 @@ function populateSocialLinks(profile) {
             if (target) a.attr('target', target).attr('rel', 'noopener noreferrer');
 
             a.html('<i class="fa ' + link.icon + ' social-icon" aria-hidden="true"></i>');
+            a.addClass('social-link');
             if (link.label === 'Google Scholar') {
-                a.addClass('scholar-link').append('<span class="scholar-label-full">Google Scholar</span><span class="scholar-label-short" aria-hidden="true">Scholar</span>');
+                a.addClass('scholar-link');
             }
             li.append(a);
             socialNav.append(li);

@@ -43,22 +43,21 @@ body.layout-refined {
 #site-nav .navbar-toggle { margin-right: 0; margin-top: 12px; }
 #site-nav .navbar-collapse { padding-inline: 0; }
 #site-nav > .container { position: relative; }
-#site-nav #social-nav { margin-right: 0; }
-#site-nav #social-nav .scholar-link {
+#site-nav #social-nav { display: flex; align-items: center; gap: 2px; margin-right: 0; }
+#site-nav #social-nav .social-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    width: 44px;
     min-height: 44px;
     margin: 8px 0;
-    padding: 6px 10px !important;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    line-height: 20px;
-    font-size: 14px;
+    padding: 0 !important;
+    border: 0;
+    border-radius: 4px;
+    line-height: 1;
 }
-#site-nav #social-nav .scholar-link:hover { border-color: #777; background: #f5f5f5; }
-#site-nav #social-nav .scholar-link .social-icon { font-size: 14px; }
-.scholar-label-short { display: none; }
+#site-nav #social-nav .social-link:hover { background: rgba(0, 0, 0, 0.04); }
+#site-nav #social-nav .social-link .social-icon { font-size: 18px; }
 .site-content:focus { outline: none; }
 .profile-section.page-header { margin: 10px 0 0; padding: 20px 0 34px; border: 0; }
 .profile-layout { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 56px; }
@@ -107,24 +106,29 @@ body.layout-refined {
 .publication-authors strong { color: var(--layout-ink); }
 .publication-venue { margin: 0; font-size: 14px; line-height: 1.65; color: #666; }
 .publication-award { margin-left: 8px; color: #333; font-style: italic; }
-.publication-links { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-top: 6px; }
+.publication-links { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 10px; }
 #publications-list .publication-links .pub-btn {
     display: inline-flex;
     align-items: center;
-    min-height: 38px;
+    min-height: 36px;
     margin: 0;
-    padding: 3px 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
+    padding: 5px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.045);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
     font: inherit;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     color: var(--layout-ink) !important;
-    text-decoration: underline !important;
+    text-decoration: none !important;
     cursor: pointer;
 }
-#publications-list .publication-links .pub-btn:hover { background: transparent; color: #666 !important; }
+#publications-list .publication-links .pub-btn:hover { background: rgba(0, 0, 0, 0.08); border-color: rgba(0, 0, 0, 0.16); }
+#publications-list .publication-links .pub-btn:active { background: rgba(0, 0, 0, 0.12); }
 .publication-image-container {
     display: flex;
     grid-column: 1;
@@ -186,9 +190,6 @@ body.layout-refined {
     #site-nav .navbar-nav > li > a { min-height: 44px; padding: 10px 4px !important; justify-content: flex-start; font-size: 16px; }
     #site-nav .navbar-right > li > a { justify-content: flex-start; }
     #site-nav #social-nav { position: absolute; top: 0; right: 52px; padding: 0; margin: 0; }
-    #site-nav #social-nav .scholar-link { padding-inline: 8px !important; }
-    .scholar-label-full { display: none; }
-    .scholar-label-short { display: inline; }
     .profile-section.page-header { margin: 0; padding: 16px 0 28px; }
     #profile-name { font-size: 38px; }
     .layout-refined .bs-docs-section { padding: 26px 0 28px; }
