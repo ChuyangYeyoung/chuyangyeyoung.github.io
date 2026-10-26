@@ -36,14 +36,14 @@ async function loadContent() {
         document.title = data.profile.name;
 
         // Smooth scrolling for anchor links
-        $('a[href*="#"]:not([href="#"])').click(function() {
+        $('a[href*="#"]:not([href="#"])').not('.skip-link').click(function() {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                 if (target.length) {
                     $('html, body').animate({
                         scrollTop: target.offset().top - 70
-                    }, 800);
+                    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400);
                     return false;
                 }
             }
@@ -421,12 +421,32 @@ function initCrackEffect() {
 }
 
 
+function escapeText(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 // Profile Section
 function populateProfile(profile) {
     $('#nav-name').text(profile.name);
     $('#profile-name').text(profile.name);
     $('#profile-photo').attr('src', profile.photo);
     $('#profile-photo').attr('alt', profile.name + ' Profile Photo');
+
+    const links = [
+        { label: 'Email', url: profile.email ? 'mailto:' + profile.email : '' },
+        { label: 'Google Scholar', url: profile.googleScholar },
+        { label: 'GitHub', url: profile.github },
+        { label: 'CV', url: profile.cv }
+    ].filter(link => link.url);
+    $('#profile-links').html(links.map(link =>
+        '<a href="' + escapeText(link.url) + '"' +
+        (link.url.startsWith('mailto:') ? '' : ' target="_blank" rel="noopener noreferrer"') +
+        '>' + link.label + '</a>'
+    ).join(''));
+
 
     // Format bio - split into paragraphs
     if (Array.isArray(profile.bio)) {
@@ -502,92 +522,67 @@ function populatePublications(publications) {
         return;
     }
 
-    publications.forEach(pub => {
-        let html = '<li>';
-
-        // Authors
+    publications.forEach((pub, index) => {
+        const absId = 'abstract-' + (index + 1);
+        let html = '<li class="publication"><article class="publication-copy">';
+        html += '<h3 class="publication-title">' + escapeText(pub.title) + '</h3>';
         if (pub.authors) {
-            const authorStr = pub.authors.replace('Chuyang Ye', '<strong>Chuyang Ye</strong>');
-            html += authorStr + ', ';
+            html += '<p class="publication-authors">' +
+                escapeText(pub.authors).replace('Chuyang Ye', '<strong>Chuyang Ye</strong>') + '</p>';
         }
+        html += '<p class="publication-venue">' + escapeText(pub.venue) +
+            (pub.year ? ' · ' + escapeText(pub.year) : '') +
+            (pub.award ? ' <span class="publication-award">' + escapeText(pub.award) + '</span>' : '') +
+            '</p><div class="publication-links">';
 
-        // Title in italics
-        html += '<em>' + pub.title + '</em>, ';
-
-        // Venue
-        html += pub.venue;
-
-        // Year
-        if (pub.year) {
-            html += ', ' + pub.year;
-        }
-
-        // Award
-        if (pub.award) {
-            html += ' <span class="pub-btn">★ ' + pub.award + '</span>';
-        }
-
-        // Links
-        if (pub.links) {
-            html += ' ';
-            if (pub.links.paper) {
-                html += '<a class="pub-btn" href="' + pub.links.paper + '" target="_blank">paper</a> ';
+        const labels = { paper: 'Paper', code: 'Code', project: 'Project', slides: 'Slides', poster: 'Poster' };
+        Object.entries(labels).forEach(([key, label]) => {
+            if (pub.links && pub.links[key]) {
+                html += '<a class="pub-btn" href="' + escapeText(pub.links[key]) +
+                    '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
             }
-            if (pub.links.code) {
-                html += '<a class="pub-btn" href="' + pub.links.code + '" target="_blank">code</a> ';
-            }
-            if (pub.links.project) {
-                html += '<a class="pub-btn" href="' + pub.links.project + '" target="_blank">project</a> ';
-            }
-            if (pub.links.slides) {
-                html += '<a class="pub-btn" href="' + pub.links.slides + '" target="_blank">slides</a> ';
-            }
-            if (pub.links.poster) {
-                html += '<a class="pub-btn" href="' + pub.links.poster + '" target="_blank">poster</a> ';
-            }
-        }
+        });
 
-        // Abstract toggle
         if (pub.abstract) {
-            const absId = 'abs-' + Math.random().toString(36).substr(2, 9);
-            html += '<a class="pub-btn abs-toggle" data-target="' + absId + '">abs</a>';
-            html += '<div id="' + absId + '" class="abstract-text" style="display:none;">' + pub.abstract + '</div>';
+            html += '<button class="pub-btn abs-toggle" type="button" data-target="' + absId +
+                '" aria-controls="' + absId + '" aria-expanded="false">Abstract</button>';
         }
-
-        // Image
+        html += '</div>';
+        if (pub.abstract) {
+            html += '<div id="' + absId + '" class="abstract-text" style="display:none;">' +
+                escapeText(pub.abstract) + '</div>';
+        }
+        html += '</article>';
         if (pub.image) {
-            html += '<br><div class="publication-image-container">';
-            html += '<img src="' + pub.image + '" alt="' + pub.title + '" class="publication-image">';
-            html += '</div>';
+            html += '<figure class="publication-image-container"><img src="' + escapeText(pub.image) +
+                '" alt="Overview figure for ' + escapeText(pub.title) +
+                '" class="publication-image" loading="lazy" decoding="async"></figure>';
         }
-
         html += '</li>';
         pubList.append(html);
     });
 
-    pubList.on('click', '.abs-toggle', function(e) {
-        e.preventDefault();
+    pubList.off('click', '.abs-toggle').on('click', '.abs-toggle', function() {
         const absId = $(this).data('target');
         const target = $('#' + absId);
+        const opening = !target.is(':visible');
+        $(this).attr('aria-expanded', String(opening)).text(opening ? 'Hide abstract' : 'Abstract');
 
-        let duration = 200; // fallback if pretext not loaded
+        let duration = 200;
         if (window.pretext) {
-            if (!abstractHeightCache[absId]) {
-                // .abstract-text CSS: font-size 0.82em, font-family Georgia, line-height 1.6
-                // padding: 8px 12px (12px each side = 24px horizontal)
-                const containerWidth = target.closest('li').width();
-                const maxWidth = containerWidth - 24;
+            const containerWidth = target.closest('.publication-copy').width();
+            const cacheKey = absId + ':' + containerWidth;
+            if (!abstractHeightCache[cacheKey]) {
                 const bodyFontSize = parseFloat($('body').css('font-size'));
-                const fontSize = (0.82 * bodyFontSize).toFixed(2);
-                const lineHeightPx = 0.82 * bodyFontSize * 1.6;
+                const fontSize = (0.88 * bodyFontSize).toFixed(2);
                 const prepared = window.pretext.prepare(target.text(), fontSize + 'px Georgia');
-                const { height } = window.pretext.layout(prepared, maxWidth, lineHeightPx);
-                abstractHeightCache[absId] = height;
+                const result = window.pretext.layout(prepared, Math.max(1, containerWidth - 24), 0.88 * bodyFontSize * 1.65);
+                abstractHeightCache[cacheKey] = result.height;
             }
-            duration = Math.round(Math.min(600, Math.max(120, abstractHeightCache[absId] * 0.8)));
+            duration = Math.round(Math.min(600, Math.max(120, abstractHeightCache[cacheKey] * 0.8)));
         }
-
-        target.slideToggle(duration);
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) duration = 0;
+        target.stop(true, true).slideToggle(duration);
     });
 }
 
@@ -653,19 +648,14 @@ function populateExperience(experience) {
         $('#experience-section').hide();
         return;
     }
-
     const expList = $('#experience-list');
     expList.empty();
-
     experience.forEach(exp => {
-        let html = '<li><strong>' + exp.position + '</strong>';
-        if (exp.institution) {
-            html += ', ' + exp.institution;
-        }
-        if (exp.period) {
-            html += ', ' + exp.period;
-        }
-        html += '</li>';
+        let html = '<li class="experience-item">';
+        html += '<p class="experience-period">' + escapeText(exp.period || '') + '</p>';
+        html += '<div><h3 class="experience-position">' + escapeText(exp.position) + '</h3>';
+        if (exp.institution) html += '<p class="experience-institution">' + exp.institution + '</p>';
+        html += '</div></li>';
         expList.append(html);
     });
 }
@@ -711,29 +701,23 @@ function populateService(services) {
     });
 }
 
-// News (optional)
+// News
 function populateNews(news) {
     if (!news || news.length === 0) {
         $('#news-section').hide();
         return;
     }
-
     $('#news-section').show();
-    const newsList = $('#news-list');
-    newsList.empty();
-
-    // Show only recent 10 news
-    const recentNews = news.slice(0, 10);
-
-    recentNews.forEach(item => {
-        let html = '<li>';
-        if (item.date) {
-            html += '[' + item.date + '] ';
-        }
-        html += item.content;
-        html += '</li>';
-        newsList.append(html);
-    });
+    const renderItems = items => items.map(item => {
+        const date = item.date || '';
+        return '<li><time class="news-date" datetime="' + escapeText(date ? date + '-01' : '') +
+            '">' + escapeText(date) + '</time><div class="news-copy">' + item.content + '</div></li>';
+    }).join('');
+    $('#news-list').html(renderItems(news.slice(0, 3)));
+    const older = news.slice(3);
+    $('#news-archive').prop('hidden', older.length === 0);
+    $('#news-archive-list').html(renderItems(older));
+    $('#news-archive summary').text('Earlier news (' + older.length + ')');
 }
 
 // Footer
