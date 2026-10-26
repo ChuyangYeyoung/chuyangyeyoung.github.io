@@ -436,12 +436,10 @@ function populateProfile(profile) {
     $('#profile-photo').attr('alt', profile.name + ' Profile Photo');
 
     const links = [
-        { label: 'Email', url: profile.email ? 'mailto:' + profile.email : '' },
-        { label: 'Google Scholar', url: profile.googleScholar },
         { label: 'GitHub', url: profile.github },
         { label: 'CV', url: profile.cv }
     ].filter(link => link.url);
-    $('#profile-links').html(links.map(link =>
+    $('#profile-links').toggle(links.length > 0).html(links.map(link =>
         '<a href="' + escapeText(link.url) + '"' +
         (link.url.startsWith('mailto:') ? '' : ' target="_blank" rel="noopener noreferrer"') +
         '>' + link.label + '</a>'
@@ -470,7 +468,6 @@ function populateSocialLinks(profile) {
     const socialLinks = [
         { url: profile.github, icon: 'fa-github', label: 'GitHub' },
         { url: profile.twitter, icon: 'fa-twitter', label: 'Twitter' },
-        { url: profile.email, icon: 'fa-envelope', label: 'Contact me', prefix: 'mailto:' },
         { url: profile.linkedin, icon: 'fa-linkedin', label: 'LinkedIn' },
         { url: profile.googleScholar, icon: 'fa-graduation-cap', label: 'Google Scholar' }
     ];
@@ -482,10 +479,14 @@ function populateSocialLinks(profile) {
             const li = $('<li></li>');
             const a = $('<a></a>')
                 .attr('href', href)
-                .attr('title', link.label);
-            if (target) a.attr('target', target);
+                .attr('title', link.label)
+                .attr('aria-label', link.label);
+            if (target) a.attr('target', target).attr('rel', 'noopener noreferrer');
 
-            a.html('<i class="fa ' + link.icon + ' social-icon"></i>');
+            a.html('<i class="fa ' + link.icon + ' social-icon" aria-hidden="true"></i>');
+            if (link.label === 'Google Scholar') {
+                a.addClass('scholar-link').append('<span class="scholar-label-full">Google Scholar</span><span class="scholar-label-short" aria-hidden="true">Scholar</span>');
+            }
             li.append(a);
             socialNav.append(li);
         }

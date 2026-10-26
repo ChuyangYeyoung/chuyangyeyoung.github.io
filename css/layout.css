@@ -42,6 +42,23 @@ body.layout-refined {
 }
 #site-nav .navbar-toggle { margin-right: 0; margin-top: 12px; }
 #site-nav .navbar-collapse { padding-inline: 0; }
+#site-nav > .container { position: relative; }
+#site-nav #social-nav { margin-right: 0; }
+#site-nav #social-nav .scholar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    margin: 8px 0;
+    padding: 6px 10px !important;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    line-height: 20px;
+    font-size: 14px;
+}
+#site-nav #social-nav .scholar-link:hover { border-color: #777; background: #f5f5f5; }
+#site-nav #social-nav .scholar-link .social-icon { font-size: 14px; }
+.scholar-label-short { display: none; }
 .site-content:focus { outline: none; }
 .profile-section.page-header { margin: 10px 0 0; padding: 20px 0 34px; border: 0; }
 .profile-layout { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 56px; }
@@ -168,6 +185,10 @@ body.layout-refined {
     #site-nav .navbar-nav { padding: 0; margin: 4px 0 8px; }
     #site-nav .navbar-nav > li > a { min-height: 44px; padding: 10px 4px !important; justify-content: flex-start; font-size: 16px; }
     #site-nav .navbar-right > li > a { justify-content: flex-start; }
+    #site-nav #social-nav { position: absolute; top: 0; right: 52px; padding: 0; margin: 0; }
+    #site-nav #social-nav .scholar-link { padding-inline: 8px !important; }
+    .scholar-label-full { display: none; }
+    .scholar-label-short { display: inline; }
     .profile-section.page-header { margin: 0; padding: 16px 0 28px; }
     #profile-name { font-size: 38px; }
     .layout-refined .bs-docs-section { padding: 26px 0 28px; }
